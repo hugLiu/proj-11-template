@@ -1,0 +1,9 @@
+E:\projs\公用组件库\dotNet\公司统一框架\v3.0\Branch\知识管理\Code\Jurassic.AppCenter.Core\bin\Debug\Jurassic.AppCenter.Core.dll.config
+E:\projs\公用组件库\dotNet\公司统一框架\v3.0\Branch\知识管理\Code\Jurassic.AppCenter.Core\bin\Debug\Jurassic.AppCenter.Core.dll
+E:\projs\公用组件库\dotNet\公司统一框架\v3.0\Branch\知识管理\Code\Jurassic.AppCenter.Core\bin\Debug\Jurassic.AppCenter.Core.pdb
+E:\projs\公用组件库\dotNet\公司统一框架\v3.0\Branch\知识管理\Code\Jurassic.AppCenter.Core\bin\Debug\Jurassic.Com.dll
+E:\projs\公用组件库\dotNet\公司统一框架\v3.0\Branch\知识管理\Code\Jurassic.AppCenter.Core\bin\Debug\Newtonsoft.Json.dll
+E:\projs\公用组件库\dotNet\公司统一框架\v3.0\Branch\知识管理\Code\Jurassic.AppCenter.Core\bin\Debug\Jurassic.Com.pdb
+E:\projs\公用组件库\dotNet\公司统一框架\v3.0\Branch\知识管理\Code\Jurassic.AppCenter.Core\obj\Debug\Jurassic.AppCenter.Core.csprojResolveAssemblyReference.cache
+E:\projs\公用组件库\dotNet\公司统一框架\v3.0\Branch\知识管理\Code\Jurassic.AppCenter.Core\obj\Debug\Jurassic.AppCenter.Core.dll
+E:\projs\公用组件库\dotNet\公司统一框架\v3.0\Branch\知识管理\Code\Jurassic.AppCenter.Core\obj\Debug\Jurassic.AppCenter.Core.pdb
