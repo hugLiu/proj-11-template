@@ -1,0 +1,2 @@
+E:\projs\公用组件库\dotNet\公司统一框架\v3.0\Branch\知识管理\Code\Jurassic.WebRepeater\obj\Debug\Jurassic.WebRepeater.csprojResolveAssemblyReference.cache
+E:\projs\公用组件库\dotNet\公司统一框架\v3.0\Branch\知识管理\Code\Jurassic.WebRepeater\obj\Debug\Jurassic.WebRepeater.g.resources

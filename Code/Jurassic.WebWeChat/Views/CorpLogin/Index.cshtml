@@ -1,0 +1,71 @@
+﻿@{
+    Layout = "~/Views/Shared/_FormLayout.cshtml";
+    ViewBag.Title = "请绑定本地系统用户";
+    ViewBag.ShowSearchBox = false;
+    ViewBag.ShowBreadCrumb = false;
+    ViewBag.ShowToolBar = false;
+}
+<style>
+    .changepassword .mini-textbox {
+        width: 250px;
+    }
+
+    .changepassword .titleline {
+        text-align: center;
+        border-bottom: 1px solid #f3f3f3;
+    }
+
+    .changepassword .prompt {
+        color: #2b7cd8;
+        font-size: 14px;
+    }
+
+    .changepassword .contentdivl {
+        width: 35%;
+    }
+
+        .changepassword .contentdivl label,
+        .changepassword .contentdivr label {
+            color: #999;
+        }
+</style>
+<div class="mini-xs mini-sm mini-md mini-md-active mini-col">
+    <div class="container-fluid">
+        <div class="mini-clearfix">
+            <div class="mini-col-12">
+                <div class="mini-panel layout-panel  frame-fit topinfo frame-fit changepassword" width="auto" showHeader="false">
+                    <div class="contentdiv">
+                        <div class="titlediv titleline">
+                            <p class="prompt">您是第一次在微信中登录本系统，请先输入本地用户的账号密码：</p>
+                        </div>
+                        <div>
+                            <div class="contentdivl"><label> @JStr.UserName：</label></div>
+                            <div class="contentdivr">
+                                <input id="UserName" name="UserName" errormode="icon" class="mini-textbox" required="true" requirederrortext="用户名为空" />
+                            </div>
+                        </div>
+                        <div>
+                            <div class="contentdivl"><label>@FStr.Password：</label></div>
+                            <div class="contentdivr">
+                                <input id="Password" name="Password" errormode="icon" class="mini-password" required="true" vtype="minLength:5" requirederrortext="@FStr.PasswordEmpty" minlengtherrortext="@FStr.PasswordAtLeast5Chars" />
+                            </div>
+                        </div>
+                        <div>
+                            <div class="contentdivl"></div>
+                            <div class="contentdivr">
+                                <a class="mini-button frame-submit frame-default jrbtn-primary">
+                                    @JStr.OK
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script type="text/javascript">
+    mini.parse();
+</script>
