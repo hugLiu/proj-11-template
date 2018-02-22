@@ -1,0 +1,179 @@
+﻿@using Jurassic.WebFrame.Models;
+@model UserPortalModel
+@{
+    ViewBag.ShowBreadCrumb = false;
+    //ViewBag.ShowToolBar = false;
+    ViewBag.ShowSearchBox = false;
+    Layout = "~/Views/Shared/_FormLayout.cshtml";
+
+    //每个单元的像素宽度
+    int cellWidth = 180;
+    //每个单元的像素高度
+    int cellHeight = 80;
+}
+@section UserToolBar
+{
+    <a class="mini-button frame-submit" iconcls="icon-new-save" plain="true" id="saveLayout">保存布局</a>
+    <a class="mini-button frame-submit" iconcls="icon-new-initialize" plain="true" id="resumeLayout">重置布局</a>
+}
+<!-- jQuery / jQuery UI -->
+<script src="~/Scripts/jqueryui/jquery-ui.min.js"></script>
+<!-- jQuery Touch Punch - Enable Touch Drag and Drop -->
+<script src="~/Scripts/shapeshift/vendor/jquery.touch-punch.min.js"></script>
+<!-- jQuery.Shapeshift -->
+<script src="~/Scripts/shapeshift/jquery.shapeshift.min.js"></script>
+@*下面的css样式需要统一到框架中*@
+<style>
+    .ss-container {
+      position: relative;
+    }
+
+
+     .ss-container > div {
+    
+      background: #fff;
+      position: absolute;
+      width: @(cellWidth)px;
+    }
+
+       .ss-container > div[data-ss-colspan="1"] {
+        width: @(cellWidth)px;
+    }
+
+    .ss-container > div[data-ss-colspan="2"] {
+        width: @(cellWidth*2)px;
+    }
+
+    .ss-container > div[data-ss-colspan="3"] {
+        width: @(cellWidth*3)px;
+    }
+
+    .ss-container > div[data-ss-colspan="4"] {
+        width: @(cellWidth*4)px;
+    }
+
+    .ss-container > div[data-ss-colspan="5"] {
+        width: @(cellWidth*5)px;
+    }
+
+    .ss-container > div[data-ss-colspan="6"] {
+        width: @(cellWidth*6)px;
+    }
+
+
+    .ss-container > .ss-placeholder-child {
+        background: transparent;
+        border: 1px dashed blue;
+    }
+
+
+    .ss-handle {
+        padding:5px 8px;
+        background: #fff;
+        font-weight: 700;
+        border-bottom: 1px solid #e7eaec;
+        border-top: 4px solid #e7eaec;
+        cursor: move;
+    }
+
+    .ss-close {
+        float: right;
+        cursor: pointer;
+    }
+
+    /*组件外框*/
+    .ss-cell{
+       border:4px solid #f0f3f8;
+    }
+    dl{
+       padding:5px;
+       overflow:hidden;
+    }
+    .icon-close-ss-handle{
+       color:#cdcdcd;
+       font-size:14px;
+    }
+    .glyphicon:after{
+       font-family:'微软雅黑';
+    }
+</style>
+<div class="ss-container">
+    @foreach (var w in Model.Widgets.Where(w => w.Visible).OrderBy(w => w.Order))
+    {
+        var func = AppManager.Instance.FunctionManager.GetById(w.Id);
+        if (func == null)
+        {
+            continue;
+        }
+        <div class="ss-cell" id="@w.Id" data-ss-colspan="@Math.Max(1,w.Cols)" style="height:@(w.Rows==0?"auto":w.Rows*cellHeight+"px")">
+            @if (w.ShowTitle)
+                {
+                <div class='ss-handle'>
+                    <span class="@func.IconClass"></span><span style="margin-left:10px">@w.Title</span>
+                    @if (w.ShowCloseButton)
+                    {
+                        <span class="ss-close" onclick="closeWidget(this)"><i class="iconfont icon-close-ss-handle"></i></span>
+                    }
+                </div>
+            }
+            @Html.RenderFunction(func)
+        </div>
+    }
+</div>
+<input type="hidden" id="layoutIds" name="layoutIds" />
+<script>
+    mini.parse();
+    $(document).ready(function () {
+        $(".ss-container").shapeshift({
+            selector: '.ss-cell',
+            colWidth: @cellWidth,
+            columns: 6,
+            gutterX: 0,
+            gutterY: 0,
+            paddingX: 0,
+            paddingY: 0,
+            handle: '.ss-handle'
+        });
+
+    });
+
+    $containers = $(".ss-container");
+    function saveLayoutIds(){
+        var ids = [];
+        $containers.children().each(function(){
+            if (this.id){
+                ids.push(this.id);
+            }
+        });
+        $('#layoutIds').val(ids.join(','));
+    }
+
+    $.regButton({
+        id: 'saveLayout',
+        beforeSubmit: function (ajax) {
+            saveLayoutIds();
+            ajax.url = "@Url.Action("SaveStartPage")";
+        }
+    });
+
+    $.regButton({
+        id: "resumeLayout",
+        beforeSubmit: function (ajax) {
+            ajax.url = "@Url.Action("ResumeStartPage")";
+        },
+    });
+
+    //$containers.on("ss-rearranged", saveLayout);
+    //$containers.on("ss-removed", saveLayout);
+    //$containers.on("ss-added", saveLayout);
+
+    //function saveLayout(e, selected){
+    //    // showTips("success", selected.id);
+    //}
+
+    function closeWidget(that){
+        var item = $(that).parents(".ss-cell").first();
+        item.remove();
+        $containers.trigger("ss-rearrange");
+    }
+</script>
