@@ -1,0 +1,20 @@
+﻿<!--
+可在 <windir>\Microsoft.NET\Framework\<ver>\CONFIG\Browsers 中找到现有的浏览器定义
+wangjiaxin：该文件属于配置文件不能打包，否则系统陷入重启死循环
+-->
+<browsers>
+  <!-- mozilla/5.0 (linux; u; android 4.1.2; zh-cn; mi-one plus build/jzo54k) applewebkit/534.30 (khtml, like gecko) version/4.0 mobile safari/534.30 micromessenger/5.0.1.352  -->
+  <browser id="WechatInAndroid" parentID="Chrome">
+    <identification>
+      <userAgent match="MicroMessenger" />
+      <userAgent match="Safari" />
+    </identification>
+
+    <capabilities>
+      <capability name="isMobileDevice"           value="true" />
+      <capability name="mobileDeviceManufacturer" value="Google" />
+      <capability name="mobileDeviceModel"        value="Android" />
+      <capability name="canInitiateVoiceCall"     value="true" />
+    </capabilities>
+  </browser>
+</browsers>

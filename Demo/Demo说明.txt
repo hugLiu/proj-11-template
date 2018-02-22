@@ -1,0 +1,11 @@
+Jurassic.WebTemplate 是使用了webframe主框架和所有jurassic.webXXX的可选组件的一个示例主项目
+AddinDemo 是一个示例插件模块，演示数据采集组件，同时也演示一个模块既可以独立运行又可以集成在webtemplate中。
+
+WeChatDemo说明：
+WeChatDemo是一个演示统一框架集成到微信企业号进行简单的消息发送的一个示例。
+由于微信的API需要一个外网地址，所以需要按以下步骤进行：
+
+1) 在本地IIS部署一个端口号30137的网站，目录指向WeChatDemo所在目录。
+2) 先运行ngrok/Sunny-Ngrok启动工具.bat, 使得 http://pmg.free.ngrok.cc 这个域名能映射到内网IIS环境。
+3) VS需要以管理员启动
+

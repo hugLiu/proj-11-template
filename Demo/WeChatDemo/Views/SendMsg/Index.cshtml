@@ -1,0 +1,34 @@
+﻿
+@{
+    ViewBag.Title = "向微信发消息 ";
+    ViewBag.ShowToolbar = false;
+}
+
+<h3>请先扫描以下二维码，关注该企业号</h3>
+<img src="~/img/guanzhuwo.jpg" style="width:120px" />
+<br />
+<h3>然后试着给大家发个消息</h3>
+<dl>
+    <dt>
+        标题：
+    </dt>
+    <dd>
+        <input type="text" class="mini-textbox" id="title" name="title" required="true" maxlength="20" style="width:400px" />
+    </dd>
+    <dt>
+        内容：
+    </dt>
+    <dd>
+        <textarea class="mini-textarea" name="msg" required="true" id="msg" style="width:400px;"></textarea>
+    </dd>
+    <dt>
+    </dt>
+    <dd>
+        <input type="button" class="mini-button frame-submit" text="发送!" />
+    </dd>
+</dl>
+
+<h3>在手机上点击收到的消息，会进入Detail页面。</h3>
+<script type="text/javascript">
+    mini.parse();
+</script>
